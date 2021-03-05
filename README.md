@@ -8,4 +8,3 @@ https://jcorcorangithub.github.io/password_generator_refactor/
 link to github repo:
 https://github.com/jcorcorangithub/password_generator_refactor
 
-add screenshot
