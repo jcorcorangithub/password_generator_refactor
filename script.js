@@ -18,7 +18,7 @@ function generatePassword() { // this function walks through the steps with the 
     numOfChars = window.prompt("enter valid amount: Enter a number that is greater than or equal to 8 and less than or equal to 128");
   } 
   
-  window.confirm("now you will select what character types you want your password to contain.\nFor each prompt, type 'y' if you would like that type of character to be included in the password criteria or 'n' if you would not.\nYou must choose at least one character type. If you do not choose any one the criteria will be selected for you");
+  window.confirm("now you will select what character types you want your password to contain.\nFor each prompt, click OK if you would like that type of character to be included in the password criteria or click CANCEL if you would not.\nYou must choose at least one character type. If you do not choose a character type they will all be included in your criteria and as a punishment you will get a really long password");
 
   let lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']; 
   let upperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
@@ -26,20 +26,22 @@ function generatePassword() { // this function walks through the steps with the 
   let spcChars = ['!','#','$','%','&','*','?'];
   let finalCriteria = []; // after the user decides what char types to use, the following code will concat the appropriate arrays onto this array
   
-  // need to figure out what to do if they do not input a y or n
-  if(window.prompt("would you like lower-case letters in your password, y or n?")=="y") {
+  
+  if(window.confirm("Do you want lower-case letters in your password?")){
     finalCriteria = finalCriteria.concat(lowerCase);
   }
-  if(window.prompt("would you like upper-case letters in your password, y or n?")=="y") {
+  if(window.confirm("Do you want upper-case letters in your password?")){
     finalCriteria = finalCriteria.concat(upperCase);
   }
-  if(window.prompt("would you like numbers in your password, y or n?")=="y") {
+  if(window.confirm("Do you want numbers in your password?")){
     finalCriteria = finalCriteria.concat(numbers);
   }
-  if(window.prompt("would you like special characters in your password, y or n?")=="y") {
+  if(window.confirm("Do you want special characters in your password?")){
     finalCriteria = finalCriteria.concat(spcChars);
   }
+
   if(finalCriteria.length==0){//if the user does not choose any of the criteria or input a y or a n
+    numOfChars = 128; // overrides/changes the users initial input for this if they did not choose a password criteria 
     finalCriteria = finalCriteria.concat(lowerCase);
     finalCriteria = finalCriteria.concat(upperCase);
     finalCriteria = finalCriteria.concat(numbers);
@@ -59,7 +61,7 @@ function generatePassword() { // this function walks through the steps with the 
     //this will reset and randomly choose another item in the array, eventually concatonating it to the password
   }
 
-  return "your password is "+passwordString;
+  return "Your password is: \n"+passwordString;
 }
 
 
